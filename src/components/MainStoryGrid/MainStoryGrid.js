@@ -1,17 +1,21 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import {
-  MAIN_STORY,
-  OPINION_STORIES,
-  SECONDARY_STORIES,
-} from '../../data';
+import { MAIN_STORY, OPINION_STORIES, SECONDARY_STORIES } from "../../data";
 
-import SectionTitle from '../SectionTitle';
-import MainStory from '../MainStory';
-import SecondaryStory from '../SecondaryStory';
-import OpinionStory from '../OpinionStory';
-import Advertisement from '../Advertisement';
+import SectionTitle from "../SectionTitle";
+import MainStory from "../MainStory";
+import SecondaryStory from "../SecondaryStory";
+import OpinionStory from "../OpinionStory";
+import Advertisement from "../Advertisement";
+
+import { COLORS } from "../../constants";
+
+const Divider = styled.div`
+  height: 1px;
+  background-color: ${COLORS.gray[300]};
+  margin: 16px 0;
+`;
 
 const MainStoryGrid = () => {
   return (
@@ -22,9 +26,15 @@ const MainStoryGrid = () => {
 
       <SecondaryStorySection>
         <StoryList>
-          {SECONDARY_STORIES.map((story, index) => (
-            <SecondaryStory key={story.id} {...story} />
-          ))}
+          {SECONDARY_STORIES.map((story, index) => {
+            const showDivider = index + 1 !== SECONDARY_STORIES.length;
+            return (
+              <>
+                <SecondaryStory key={story.id} {...story} />
+                {showDivider && <Divider />}
+              </>
+            );
+          })}
         </StoryList>
       </SecondaryStorySection>
 
@@ -47,10 +57,10 @@ const MainStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
-    'main-story'
-    'secondary-stories'
-    'opinion-stories'
-    'advertisement';
+    "main-story"
+    "secondary-stories"
+    "opinion-stories"
+    "advertisement";
   gap: 48px;
   margin-bottom: 48px;
 `;

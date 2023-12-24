@@ -123,7 +123,7 @@ const DesktopHeaderWrapper = styled(MaxWidthWrapper)`
   justify-content: space-between;
   margin-top: 32px;
   margin-bottom: 48px;
-  @media ${QUERIES.tabletAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
   }
 `;

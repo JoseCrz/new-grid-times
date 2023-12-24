@@ -20,6 +20,18 @@ const A = styled.a`
   &:not(:last-of-type) {
     border-bottom: 1px solid ${COLORS.gray[300]};
   }
+
+  @media ${QUERIES.tabletAndUp} {
+    &:not(:last-of-type) {
+      border-bottom: none;
+    }
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    &:not(:last-of-type) {
+      border-bottom: 1px solid ${COLORS.gray[300]};
+    }
+  }
 `;
 
 const Wrapper = styled.article`
@@ -31,6 +43,10 @@ const Wrapper = styled.article`
 
   @media ${QUERIES.tabletAndUp} {
     display: block;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
   }
 `;
 
